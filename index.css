@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Eigene CSS-Klassen (wie im Original-HTML) */
+.glass {
+    @apply bg-opacity-40 backdrop-blur-md border border-opacity-10 shadow-md transition-all duration-300;
+    background: rgba(15, 28, 53, 0.4);
+    border-color: rgba(50, 167, 255, 0.1);
+}
+
+.card-hover:hover {
+    @apply transform translate-y-[-5px] border-opacity-50 shadow-lg;
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+}
+
+.btn-gradient {
+    @apply bg-gradient-to-br from-primary-dark to-surface transition-all duration-300;
+    background: linear-gradient(135deg, #040b1a 0%, #0f1c35 100%);
+}
+.btn-gradient:hover {
+    @apply transform translate-y-[-2px] shadow-lg;
+    box-shadow: 0 10px 20px -10px rgba(59, 130, 246, 0.5);
+}
+
+.creative-btn {
+  @apply relative overflow-hidden bg-transparent border border-blue-500 py-2 px-6 rounded-full transition-all duration-300;
+}
+
+.creative-btn:hover {
+    @apply bg-blue-500 border-transparent;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus {
+  @apply border-blue-500 shadow-outline;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Modal Backdrop Animation */
+.modal-backdrop {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Verbesserte Toast Animation */
+.toast {
+    animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
