@@ -124,9 +124,14 @@ async def execute_agent(request: Request):
             "message": error_msg
         })
 
+# Update the path to point to the correct build directory
+BUILD_DIR = BASE_DIR / "../my-app/build"
+if not BUILD_DIR.exists():
+    print(f"Warning: Build directory {BUILD_DIR} not found. React app may not be built yet.")
+    # Fallback to current directory for development
+    BUILD_DIR = BASE_DIR / "my-app/build"
 
-app.mount("/", StaticFiles(directory="my-app/build", html=True), name="root") # Korrigiert: name="root"
-
+app.mount("/", StaticFiles(directory=str(BUILD_DIR), html=True), name="root")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
